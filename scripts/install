@@ -215,7 +215,7 @@ ynh_replace_string --match_string="__PHANTOMJS_KEY__" --replace_string="$(ynh_st
 chown -R root: $final_path
 
 chmod -R 755 $final_path/storage
-chown -R $app $final_path/storage $final_path/bootstrap $final_path/public/logo $final_path/.env
+chown -R $app: $final_path/storage $final_path/bootstrap $final_path/public/logo $final_path/.env
 
 
 #=================================================
