@@ -199,6 +199,7 @@ ynh_replace_string --match_string="__DB_NAME__" --replace_string="$db_name" --ta
 ynh_replace_string --match_string="__DB_USER__" --replace_string="$db_user" --target_file="$final_path/.env"
 ynh_replace_string --match_string="__DB_PASS__" --replace_string="$db_pwd" --target_file="$final_path/.env"
 
+ynh_replace_string --match_string="__API_SECRET__" --replace_string="$(ynh_string_random --length=32)" --target_file="$final_path/.env"
 ynh_replace_string --match_string="__APP_KEY__" --replace_string="$(ynh_string_random --length=32)" --target_file="$final_path/.env"
 ynh_replace_string --match_string="__PHANTOMJS_KEY__" --replace_string="$(ynh_string_random --length=32)" --target_file="$final_path/.env"
 
