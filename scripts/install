@@ -203,6 +203,8 @@ ynh_replace_string --match_string="__API_SECRET__" --replace_string="$(ynh_strin
 ynh_replace_string --match_string="__APP_KEY__" --replace_string="$(ynh_string_random --length=32)" --target_file="$final_path/.env"
 ynh_replace_string --match_string="__PHANTOMJS_KEY__" --replace_string="$(ynh_string_random --length=32)" --target_file="$final_path/.env"
 
+ynh_replace_string --match_string="__MAIL_FROM_ADDRESS__" --replace_string="$(ynh_user_get_info $admin mail)" --target_file="$final_path/.env"
+ynh_replace_string --match_string="__MAIL_FROM_NAME__" --replace_string="$(ynh_user_get_info $admin firstname) $(ynh_user_get_info $admin lastname)" --target_file="$final_path/.env"
 
 #=================================================
 # GENERIC FINALIZATION
