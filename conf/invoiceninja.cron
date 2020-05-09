@@ -1,0 +1,3 @@
+0 8 * * * /var/www/invoiceninja/artisan ninja:send-invoices
+0 8 * * * /var/www/invoiceninja/artisan ninja:send-reminders
+
