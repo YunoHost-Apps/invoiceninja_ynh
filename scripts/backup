@@ -35,12 +35,6 @@ db_name=$(ynh_app_setting_get --app=$app --key=db_name)
 #=================================================
 # STANDARD BACKUP STEPS
 #=================================================
-# STOP SYSTEMD SERVICE
-#=================================================
-ynh_script_progression --message="Stopping a systemd service..." --time --weight=1
-
-ynh_systemd_action --service_name=$app --action="stop" --log_path="/var/log/$app/$app.log"
-
 #=================================================
 # BACKUP THE APP MAIN DIR
 #=================================================
@@ -87,24 +81,10 @@ ynh_script_progression --message="Backing up logrotate configuration..." --time 
 ynh_backup --src_path="/etc/logrotate.d/$app"
 
 #=================================================
-# BACKUP SYSTEMD
-#=================================================
-ynh_script_progression --message="Backing up systemd configuration..." --time --weight=1
-
-ynh_backup --src_path="/etc/systemd/system/$app.service"
-
-#=================================================
 # BACKUP A CRON FILE
 #=================================================
 
 ynh_backup --src_path="/etc/cron.d/$app"
-
-#=================================================
-# START SYSTEMD SERVICE
-#=================================================
-ynh_script_progression --message="Starting a systemd service..." --time --weight=1
-
-ynh_systemd_action --service_name=$app --action="start" --log_path="/var/log/$app/$app.log"
 
 #=================================================
 # END OF SCRIPT
