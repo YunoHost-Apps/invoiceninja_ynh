@@ -24,6 +24,8 @@ ynh_abort_if_errors
 # RETRIEVE ARGUMENTS FROM THE MANIFEST
 #=================================================
 
+YNH_PHP_VERSION="7.0"
+
 domain=$YNH_APP_ARG_DOMAIN
 path_url=$YNH_APP_ARG_PATH
 admin=$YNH_APP_ARG_ADMIN
@@ -238,6 +240,19 @@ ynh_script_progression --message="Configuring log rotation..."
 
 # Use logrotate to manage application logfile(s)
 ynh_use_logrotate
+
+#=================================================
+# ADD A CRON JOB
+#=================================================
+
+cron_path="/etc/cron.d/$app"
+cp -a ../conf/invoiceninja.cron "$cron_path"
+chown root: "$cron_path"
+chmod 644 "$cron_path"
+
+ynh_replace_string --match_string="__USER__" --replace_string="$app" --target_file="$cron_path"
+ynh_replace_string --match_string="__DESTDIR__" --replace_string="$final_path" --target_file="$cron_path"
+ynh_replace_string --match_string="__YNH_PHP_VERSION__" --replace_string="$YNH_PHP_VERSION" --target_file="$cron_path"
 
 #=================================================
 # SETUP FAIL2BAN
