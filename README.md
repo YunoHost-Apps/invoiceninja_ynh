@@ -56,3 +56,16 @@ Configuration happens in the application itself.
 
 * If possible, create initial user
 * Test upgrade
+
+
+Developers infos
+----------------
+
+Please do your pull request to the [testing branch](https://github.com/YunoHost-Apps/invoiceninja_ynh/tree/testing).
+
+To try the testing branch, please proceed like that.
+```
+sudo yunohost app install https://github.com/YunoHost-Apps/invoiceninja_ynh/tree/testing --debug
+or
+sudo yunohost app upgrade ttrss -u https://github.com/YunoHost-Apps/invoiceninja_ynh/tree/testing --debug
+```
