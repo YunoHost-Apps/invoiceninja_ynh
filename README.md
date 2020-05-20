@@ -14,7 +14,7 @@ Invoice Ninja is the #1 open-source platform to create & email invoices, track p
 
 ## Screenshots
 
-![](Link to an screenshot for this app)
+![](https://www.invoiceninja.com/wp-content/uploads/2015/11/Create-Invoices-in-Seconds.png)
 
 ## Demo
 
