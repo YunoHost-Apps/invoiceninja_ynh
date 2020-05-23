@@ -2,7 +2,7 @@
     "name": "InvoiceNinja",
     "id": "invoiceninja",
     "packaging_format": 1,
-    "description": {.
+    "description": {
         "en": "Create and email invoices, track payments and expenses, and time tasks"
     },
     "version": "1.0~ynh1",
