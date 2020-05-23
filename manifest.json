@@ -2,8 +2,8 @@
     "name": "InvoiceNinja",
     "id": "invoiceninja",
     "packaging_format": 1,
-    "description": {
-        "en": "Invoice Ninja is the #1 open-source platform to create & email invoices, track payments and expenses, and time billable tasks & projects for clients."
+    "description": {.
+        "en": "Create and email invoices, track payments and expenses, and time tasks"
     },
     "version": "1.0~ynh1",
     "url": "https://invoiceninja.org",
