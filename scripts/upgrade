@@ -133,25 +133,6 @@ $final_path/artisan optimize --force --no-interaction --verbose
 # Bring the application out of maintenance mode
 $final_path/artisan up --no-interaction --verbose
 
-
-#=================================================
-# SETUP LOGROTATE
-#=================================================
-ynh_script_progression --message="Upgrading logrotate configuration..."
-
-# Use logrotate to manage app-specific logfile(s)
-ynh_use_logrotate --non-append
-
-#=================================================
-# GENERIC FINALIZATION
-#=================================================
-# UPGRADE FAIL2BAN
-#=================================================
-ynh_script_progression --message="Reconfiguring fail2ban..."
-
-# Create a dedicated fail2ban config
-ynh_add_fail2ban_config --logpath="/var/log/nginx/${domain}-error.log" --failregex="Regex to match into the log for a failed login"
-
 #=================================================
 # SECURE FILES AND DIRECTORIES
 #=================================================
@@ -161,18 +142,6 @@ chown -R root: $final_path
 
 chmod -R 755 $final_path/storage
 chown -R $app $final_path/storage $final_path/bootstrap $final_path/public/logo
-
-#=================================================
-# SETUP SSOWAT
-#=================================================
-ynh_script_progression --message="Upgrading SSOwat configuration..."
-
-# Make app public if necessary
-if [ $is_public -eq 1 ]
-then
-	# unprotected_uris allows SSO credentials to be passed anyway
-	ynh_app_setting_set --app=$app --key=unprotected_uris --value="/"
-fi
 
 #=================================================
 # RELOAD NGINX
