@@ -122,16 +122,16 @@ ynh_add_fpm_config
 ynh_script_progression --message="Upgrading the database..."
 
 # Put the application into maintenance mode
-$final_path/artisan down --no-interaction --verbose
+sudo $final_path/artisan down --no-interaction --verbose
 
 # Run the database migrations
-$final_path/artisan migrate --force --no-interaction --verbose
+sudo $final_path/artisan migrate --force --no-interaction --verbose
 
 # Optimize the framework for better performance
-$final_path/artisan optimize --force --no-interaction --verbose
+sudo $final_path/artisan optimize --force --no-interaction --verbose
 
 # Bring the application out of maintenance mode
-$final_path/artisan up --no-interaction --verbose
+sudo $final_path/artisan up --no-interaction --verbose
 
 #=================================================
 # SECURE FILES AND DIRECTORIES
