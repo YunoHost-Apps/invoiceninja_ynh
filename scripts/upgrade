@@ -22,6 +22,8 @@ admin=$(ynh_app_setting_get --app=$app --key=admin)
 final_path=$(ynh_app_setting_get --app=$app --key=final_path)
 language=$(ynh_app_setting_get --app=$app --key=language)
 db_name=$(ynh_app_setting_get --app=$app --key=db_name)
+db_pwd=$(ynh_app_setting_get --app=$app --key=db_pwd)
+db_user=$db_name
 
 #=================================================
 # CHECK VERSION
@@ -115,6 +117,28 @@ ynh_script_progression --message="Upgrading php-fpm configuration..."
 ynh_add_fpm_config
 
 #=================================================
+# MODIFY A CONFIG FILE
+#=================================================
+
+### `ynh_replace_string` is used to replace a string in a file.
+### (It's compatible with sed regular expressions syntax)
+
+ynh_replace_string --match_string="__LANGUAGE__" --replace_string="$language" --target_file="$final_path/.env"
+
+ynh_replace_string --match_string="__DOMAIN__" --replace_string="$domain" --target_file="$final_path/.env"
+ynh_replace_string --match_string="__PATH__" --replace_string="$path_url" --target_file="$final_path/.env"
+ynh_replace_string --match_string="__DB_NAME__" --replace_string="$db_name" --target_file="$final_path/.env"
+ynh_replace_string --match_string="__DB_USER__" --replace_string="$db_user" --target_file="$final_path/.env"
+ynh_replace_string --match_string="__DB_PASS__" --replace_string="$db_pwd" --target_file="$final_path/.env"
+
+ynh_replace_string --match_string="__API_SECRET__" --replace_string="$(ynh_app_setting_get --app=$app --key=api_secret)" --target_file="$final_path/.env"
+ynh_replace_string --match_string="__APP_KEY__" --replace_string="$(ynh_app_setting_get --app=$app --key=app_key)" --target_file="$final_path/.env"
+ynh_replace_string --match_string="__PHANTOMJS_KEY__" --replace_string="$(ynh_app_setting_get --app=$app --key=phantomjs_jey)" --target_file="$final_path/.env"
+
+ynh_replace_string --match_string="__MAIL_FROM_ADDRESS__" --replace_string="$(ynh_app_setting_get --app=$app --key=mail_from_address)" --target_file="$final_path/.env"
+ynh_replace_string --match_string="__MAIL_FROM_NAME__" --replace_string="$(ynh_app_setting_get --app=$app --key=mail_from_name)" --target_file="$final_path/.env"
+
+#=================================================
 # SPECIFIC UPGRADE
 #=================================================
 # Upgrade database via artisan
@@ -122,6 +146,7 @@ ynh_add_fpm_config
 ynh_script_progression --message="Upgrading the database..."
 
 # Put the application into maintenance mode
+
 sudo $final_path/artisan down --no-interaction --verbose
 
 # Run the database migrations
