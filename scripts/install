@@ -29,7 +29,6 @@ YNH_PHP_VERSION="7.0"
 domain=$YNH_APP_ARG_DOMAIN
 path_url=$YNH_APP_ARG_PATH
 admin=$YNH_APP_ARG_ADMIN
-is_public=$YNH_APP_ARG_IS_PUBLIC
 language=$YNH_APP_ARG_LANGUAGE
 
 ### If it's a multi-instance app, meaning it can be installed several times independently
@@ -73,8 +72,14 @@ ynh_script_progression --message="Storing installation settings..."
 ynh_app_setting_set --app=$app --key=domain --value=$domain
 ynh_app_setting_set --app=$app --key=path --value=$path_url
 ynh_app_setting_set --app=$app --key=admin --value=$admin
-ynh_app_setting_set --app=$app --key=is_public --value=$is_public
 ynh_app_setting_set --app=$app --key=language --value=$language
+
+ynh_app_setting_set --app=$app --key=api_secret --value="$(ynh_string_random --length=32)"
+ynh_app_setting_set --app=$app --key=app_key --value="$(ynh_string_random --length=32)"
+ynh_app_setting_set --app=$app --key=phantomjs_key --value="$(ynh_string_random --length=32)"
+
+ynh_app_setting_set --app=$app --key=mail_from_address --value="$(ynh_user_get_info $admin mail)"
+ynh_app_setting_set --app=$app --key=mail_from_name --value="$(ynh_user_get_info $admin firstname) $(ynh_user_get_info $admin lastname)"
 
 #=================================================
 # STANDARD MODIFICATIONS
@@ -150,43 +155,6 @@ ynh_script_progression --message="Configuring php-fpm..."
 ynh_add_fpm_config
 
 #=================================================
-# SPECIFIC SETUP
-#=================================================
-# ...
-#=================================================
-
-#=================================================
-# SETUP APPLICATION WITH CURL
-#=================================================
-
-### Use these lines only if the app installation needs to be finalized through
-### web forms. We generally don't want to ask the final user,
-### so we're going to use curl to automatically fill the fields and submit the
-### forms.
-
-# Set right permissions for curl install
-chown -R $app: $final_path
-
-# Set the app as temporarily public for curl call
-ynh_script_progression --message="Configuring SSOwat..."
-ynh_app_setting_set --app=$app --key=skipped_uris --value="/"
-# Reload SSOwat config
-yunohost app ssowatconf
-
-# Reload Nginx
-ynh_systemd_action --service_name=nginx --action=reload
-
-# Installation with curl
-ynh_script_progression --message="Finalizing installation..."
-ynh_local_curl "/INSTALL_PATH" "key1=value1" "key2=value2" "key3=value3"
-
-# Remove the public access
-if [ $is_public -eq 0 ]
-then
-	ynh_app_setting_delete --app=$app --key=skipped_uris
-fi
-
-#=================================================
 # MODIFY A CONFIG FILE
 #=================================================
 
@@ -201,15 +169,21 @@ ynh_replace_string --match_string="__DB_NAME__" --replace_string="$db_name" --ta
 ynh_replace_string --match_string="__DB_USER__" --replace_string="$db_user" --target_file="$final_path/.env"
 ynh_replace_string --match_string="__DB_PASS__" --replace_string="$db_pwd" --target_file="$final_path/.env"
 
-ynh_replace_string --match_string="__API_SECRET__" --replace_string="$(ynh_string_random --length=32)" --target_file="$final_path/.env"
-ynh_replace_string --match_string="__APP_KEY__" --replace_string="$(ynh_string_random --length=32)" --target_file="$final_path/.env"
-ynh_replace_string --match_string="__PHANTOMJS_KEY__" --replace_string="$(ynh_string_random --length=32)" --target_file="$final_path/.env"
+ynh_replace_string --match_string="__API_SECRET__" --replace_string="$(ynh_app_setting_get --app=$app --key=api_secret)" --target_file="$final_path/.env"
+ynh_replace_string --match_string="__APP_KEY__" --replace_string="$(ynh_app_setting_get --app=$app --key=app_key)" --target_file="$final_path/.env"
+ynh_replace_string --match_string="__PHANTOMJS_KEY__" --replace_string="$(ynh_app_setting_get --app=$app --key=phantomjs_jey)" --target_file="$final_path/.env"
 
-ynh_replace_string --match_string="__MAIL_FROM_ADDRESS__" --replace_string="$(ynh_user_get_info $admin mail)" --target_file="$final_path/.env"
-ynh_replace_string --match_string="__MAIL_FROM_NAME__" --replace_string="$(ynh_user_get_info $admin firstname) $(ynh_user_get_info $admin lastname)" --target_file="$final_path/.env"
+ynh_replace_string --match_string="__MAIL_FROM_ADDRESS__" --replace_string="$(ynh_app_setting_get --app=$app --key=mail_from_address)" --target_file="$final_path/.env"
+ynh_replace_string --match_string="__MAIL_FROM_NAME__" --replace_string="$(ynh_app_setting_get --app=$app --key=mail_from_name)" --target_file="$final_path/.env"
 
 #=================================================
 # GENERIC FINALIZATION
+#=================================================
+
+# Run the database migrations and initially fill the db
+sudo $final_path/artisan migrate --no-interaction --verbose --force
+sudo $final_path/artisan db:seed --force --no-interaction --verbose
+
 #=================================================
 # SECURE FILES AND DIRECTORIES
 #=================================================
@@ -224,23 +198,6 @@ chown -R root: $final_path
 chmod -R 755 $final_path/storage
 chown -R $app: $final_path/storage $final_path/bootstrap $final_path/public/logo $final_path/.env
 
-
-#=================================================
-# SETUP LOGROTATE
-#=================================================
-ynh_script_progression --message="Configuring log rotation..."
-
-### `ynh_use_logrotate` is used to configure a logrotate configuration for the logs of this app.
-### Use this helper only if there is effectively a log file for this app.
-### If you're not using this helper:
-###		- Remove the section "BACKUP LOGROTATE" in the backup script
-###		- Remove also the section "REMOVE LOGROTATE CONFIGURATION" in the remove script
-###		- As well as the section "RESTORE THE LOGROTATE CONFIGURATION" in the restore script
-###		- And the section "SETUP LOGROTATE" in the upgrade script
-
-# Use logrotate to manage application logfile(s)
-ynh_use_logrotate
-
 #=================================================
 # ADD A CRON JOB
 #=================================================
@@ -253,26 +210,6 @@ chmod 644 "$cron_path"
 ynh_replace_string --match_string="__USER__" --replace_string="$app" --target_file="$cron_path"
 ynh_replace_string --match_string="__DESTDIR__" --replace_string="$final_path" --target_file="$cron_path"
 ynh_replace_string --match_string="__YNH_PHP_VERSION__" --replace_string="$YNH_PHP_VERSION" --target_file="$cron_path"
-
-#=================================================
-# SETUP FAIL2BAN
-#=================================================
-ynh_script_progression --message="Configuring fail2ban..."
-
-# Create a dedicated fail2ban config
-ynh_add_fail2ban_config --logpath="/var/log/nginx/${domain}-error.log" --failregex="Regex to match into the log for a failed login"
-
-#=================================================
-# SETUP SSOWAT
-#=================================================
-ynh_script_progression --message="Configuring SSOwat..."
-
-# Make app public if necessary
-if [ $is_public -eq 1 ]
-then
-	# unprotected_uris allows SSO credentials to be passed anyway.
-	ynh_app_setting_set --app=$app --key=unprotected_uris --value="/"
-fi
 
 #=================================================
 # RELOAD NGINX
