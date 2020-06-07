@@ -179,6 +179,12 @@ ynh_replace_string --match_string="__MAIL_FROM_NAME__" --replace_string="$(ynh_a
 #=================================================
 # GENERIC FINALIZATION
 #=================================================
+
+# Run the database migrations and initially fill the db
+sudo $final_path/artisan migrate --no-interaction --verbose --force
+sudo $final_path/artisan db:seed --force --no-interaction --verbose
+
+#=================================================
 # SECURE FILES AND DIRECTORIES
 #=================================================
 
