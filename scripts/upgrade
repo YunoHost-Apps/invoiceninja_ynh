@@ -145,19 +145,16 @@ ynh_replace_string --match_string="__MAIL_FROM_NAME__" --replace_string="$(ynh_a
 #=================================================
 ynh_script_progression --message="Upgrading the database..."
 
-if [ ${PACKAGE_CHECK_EXEC:-0} -eq 1 ]; then
-  sudo $final_path/artisan migrate:fresh --no-interaction --verbose --force
-fi
-
 # Put the application into maintenance mode
 
 sudo $final_path/artisan down --no-interaction --verbose
 
-# Run the database migrations
-sudo $final_path/artisan migrate --force --no-interaction --verbose
-
 # Optimize the framework for better performance
 sudo $final_path/artisan optimize --force --no-interaction --verbose
+
+# Run the database migrations
+sudo $final_path/artisan migrate --no-interaction --verbose
+sudo $final_path/artisan db:seed --class=UpdateSeeder --force --no-interaction --verbose
 
 # Bring the application out of maintenance mode
 sudo $final_path/artisan up --no-interaction --verbose
@@ -170,7 +167,7 @@ sudo $final_path/artisan up --no-interaction --verbose
 chown -R root: $final_path
 
 chmod -R 755 $final_path/storage
-chown -R $app $final_path/storage $final_path/bootstrap $final_path/public/logo
+chown -R $app: $final_path/storage $final_path/bootstrap $final_path/public/logo $final_path/.env
 
 #=================================================
 # RELOAD NGINX
