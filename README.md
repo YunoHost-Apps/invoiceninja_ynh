@@ -1,6 +1,6 @@
 # Invoice Ninja for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/invoiceninja.svg)](https://dash.yunohost.org/appci/app/invoiceninja)  
+[![Integration level](https://dash.yunohost.org/integration/invoiceninja.svg)](https://dash.yunohost.org/appci/app/invoiceninja)
 [![Install invoiceninja with YunoHost](https://install-app.yunohost.org/install-with-yunohost.png)](https://install-app.yunohost.org/?app=invoiceninja)
 
 > *This package allow you to install invoiceninja quickly and simply on a YunoHost server.  
@@ -14,7 +14,7 @@ Invoice Ninja is the #1 open-source platform to create & email invoices, track p
 
 ## Screenshots
 
-![](Link to an screenshot for this app)
+![](https://www.invoiceninja.com/wp-content/uploads/2015/11/Create-Invoices-in-Seconds.png)
 
 ## Demo
 
@@ -52,11 +52,20 @@ Configuration happens in the application itself.
  * Upstream app repository: https://github.com/invoiceninja/invoiceninja
  * YunoHost website: https://yunohost.org/
 
-
 ## TODOs
 
-* Completely configure the env
-* Mail settings
-* Cronjobs
-* Create initial user?
+* If possible, create initial user
 * Test upgrade
+
+
+Developers infos
+----------------
+
+Please do your pull request to the [testing branch](https://github.com/YunoHost-Apps/invoiceninja_ynh/tree/testing).
+
+To try the testing branch, please proceed like that.
+```
+sudo yunohost app install https://github.com/YunoHost-Apps/invoiceninja_ynh/tree/testing --debug
+or
+sudo yunohost app upgrade ttrss -u https://github.com/YunoHost-Apps/invoiceninja_ynh/tree/testing --debug
+```
