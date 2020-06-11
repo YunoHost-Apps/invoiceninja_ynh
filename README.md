@@ -1,6 +1,6 @@
 # Invoice Ninja for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/invoiceninja.svg)](https://dash.yunohost.org/appci/app/invoiceninja)
+[![Integration level](https://dash.yunohost.org/integration/invoiceninja.svg)](https://dash.yunohost.org/appci/app/invoiceninja) ![](https://ci-apps.yunohost.org/ci/badges/invoiceninja.status.svg) ![](https://ci-apps.yunohost.org/ci/badges/invoiceninja.maintain.svg)  
 [![Install invoiceninja with YunoHost](https://install-app.yunohost.org/install-with-yunohost.png)](https://install-app.yunohost.org/?app=invoiceninja)
 
 > *This package allow you to install invoiceninja quickly and simply on a YunoHost server.  
@@ -38,7 +38,7 @@ Configuration happens in the application itself.
 
 #### Supported architectures
 
-* x86-64b - [![Build Status](https://ci-apps.yunohost.org/ci/logs/invoiceninja%20%28Apps%29.svg)](https://ci-apps.yunohost.org/ci/apps/invoiceninja/)
+* x86-64 - [![Build Status](https://ci-apps.yunohost.org/ci/logs/invoiceninja%20%28Apps%29.svg)](https://ci-apps.yunohost.org/ci/apps/invoiceninja/)
 * ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/invoiceninja%20%28Apps%29.svg)](https://ci-apps-arm.yunohost.org/ci/apps/invoiceninja/)
 
 ## Limitations
@@ -67,5 +67,5 @@ To try the testing branch, please proceed like that.
 ```
 sudo yunohost app install https://github.com/YunoHost-Apps/invoiceninja_ynh/tree/testing --debug
 or
-sudo yunohost app upgrade ttrss -u https://github.com/YunoHost-Apps/invoiceninja_ynh/tree/testing --debug
+sudo yunohost app upgrade invoiceninja -u https://github.com/YunoHost-Apps/invoiceninja_ynh/tree/testing --debug
 ```
