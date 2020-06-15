@@ -1,13 +1,12 @@
 # Invoice Ninja for YunoHost
 
 [![Integration level](https://dash.yunohost.org/integration/invoiceninja.svg)](https://dash.yunohost.org/appci/app/invoiceninja) ![](https://ci-apps.yunohost.org/ci/badges/invoiceninja.status.svg) ![](https://ci-apps.yunohost.org/ci/badges/invoiceninja.maintain.svg)  
-[![Install invoiceninja with YunoHost](https://install-app.yunohost.org/install-with-yunohost.png)](https://install-app.yunohost.org/?app=invoiceninja)
+[![Install Invoice Ninja with YunoHost](https://install-app.yunohost.org/install-with-yunohost.png)](https://install-app.yunohost.org/?app=invoiceninja)
 
-> *This package allow you to install invoiceninja quickly and simply on a YunoHost server.  
-If you don't have YunoHost, please see [here](https://yunohost.org/#/install) to know how to install and enjoy it.*
+> *This package allows you to install Invoice Ninja quickly and simply on a YunoHost server.  
+If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/install) to learn how to install it.*
 
 ## Overview
-
 Invoice Ninja is the #1 open-source platform to create & email invoices, track payments and expenses, and time billable tasks & projects for clients.
 
 **Shipped version:** v4.5.18
@@ -30,7 +29,7 @@ Configuration happens in the application itself.
 
 ## YunoHost specific features
 
-#### Multi-users support
+#### Multi-user support
 
 * There is no official LDAP support
 * The first user gets created after installing Invoice Ninja
@@ -57,11 +56,12 @@ Configuration happens in the application itself.
 * If possible, create initial user
 * Test upgrade
 
+---
 
-Developers infos
+Developer info
 ----------------
 
-Please do your pull request to the [testing branch](https://github.com/YunoHost-Apps/invoiceninja_ynh/tree/testing).
+Please send your pull request to the [testing branch](https://github.com/YunoHost-Apps/invoiceninja_ynh/tree/testing).
 
 To try the testing branch, please proceed like that.
 ```
