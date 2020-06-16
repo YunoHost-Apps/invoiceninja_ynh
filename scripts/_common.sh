@@ -4,6 +4,11 @@
 # COMMON VARIABLES
 #=================================================
 
+# dependencies used by the app
+pkg_dependencies=""
+
+YNH_PHP_VERSION="7.0"
+
 #=================================================
 # PERSONAL HELPERS
 #=================================================
