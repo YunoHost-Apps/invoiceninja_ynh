@@ -1,6 +1,6 @@
-SOURCE_URL=https://download.invoiceninja.com/ninja-v4.5.26.zip
-SOURCE_SUM=fb24a15b19a416cb0ce317f04e4b90a5fd217865ddfb08c36cfa3c7ad3623b12
+SOURCE_URL=https://download.invoiceninja.com/ninja-v4.5.30.zip
+SOURCE_SUM=86254f4d4050290ee0b9ea3614fa230d11d16e9e0900da40b2c7b9ca44ee045e
 SOURCE_SUM_PRG=sha256sum
 SOURCE_FORMAT=zip
 SOURCE_IN_SUBDIR=true
-SOURCE_FILENAME=ninja-v4.5.26.zip
+SOURCE_FILENAME=ninja-v4.5.30.zip
