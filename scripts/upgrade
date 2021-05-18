@@ -135,17 +135,17 @@ ynh_script_progression --message="Upgrading the database..."
 
 pushd "$final_path"
 	# Put the application into maintenance mode
-	php$phpversion artisan down --no-interaction --verbose
+	php$phpversion artisan down
 
 	# Optimize the framework for better performance
-	php$phpversion artisan optimize --force --no-interaction --verbose
+	php$phpversion artisan optimize --force
 
 	# Run the database migrations
-	php$phpversion artisan migrate --no-interaction --verbose
-	php$phpversion artisan db:seed --class=UpdateSeeder --force --no-interaction --verbose
+	php$phpversion artisan migrate --force
+	php$phpversion artisan db:seed --class=UpdateSeeder --force
 
 	# Bring the application out of maintenance mode
-	php$phpversion artisan up --no-interaction --verbose
+	php$phpversion artisan up
 popd
 
 #=================================================

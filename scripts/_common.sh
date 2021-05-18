@@ -7,6 +7,8 @@
 # dependencies used by the app
 pkg_dependencies=""
 
+YNH_PHP_VERSION="7.3"
+
 #=================================================
 # PERSONAL HELPERS
 #=================================================
