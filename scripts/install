@@ -30,6 +30,12 @@ language=$YNH_APP_ARG_LANGUAGE
 
 app=$YNH_APP_INSTANCE_NAME
 
+api_secret="$(ynh_string_random --length=32)"
+app_key="$(ynh_string_random --length=32)"
+phantomjs_key=$(ynh_string_random --length=32)
+mail_from_address="$(ynh_user_get_info $admin mail)"
+mail_from_name="$(ynh_user_get_info $admin firstname) $(ynh_user_get_info $admin lastname)"
+
 #=================================================
 # CHECK IF THE APP CAN BE INSTALLED WITH THESE ARGS
 #=================================================
@@ -51,12 +57,12 @@ ynh_app_setting_set --app=$app --key=path --value=$path_url
 ynh_app_setting_set --app=$app --key=admin --value=$admin
 ynh_app_setting_set --app=$app --key=language --value=$language
 
-ynh_app_setting_set --app=$app --key=api_secret --value="$(ynh_string_random --length=32)"
-ynh_app_setting_set --app=$app --key=app_key --value="$(ynh_string_random --length=32)"
-ynh_app_setting_set --app=$app --key=phantomjs_key --value="$(ynh_string_random --length=32)"
+ynh_app_setting_set --app=$app --key=api_secret --value=$api_secret
+ynh_app_setting_set --app=$app --key=app_key --value=$app_key
+ynh_app_setting_set --app=$app --key=phantomjs_key --value=$phantomjs_key
 
-ynh_app_setting_set --app=$app --key=mail_from_address --value="$(ynh_user_get_info $admin mail)"
-ynh_app_setting_set --app=$app --key=mail_from_name --value="$(ynh_user_get_info $admin firstname) $(ynh_user_get_info $admin lastname)"
+ynh_app_setting_set --app=$app --key=mail_from_address --value=$mail_from_address
+ynh_app_setting_set --app=$app --key=mail_from_name --value=$mail_from_name
 
 #=================================================
 # STANDARD MODIFICATIONS
