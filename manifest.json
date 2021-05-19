@@ -5,7 +5,7 @@
     "description": {
         "en": "Create and email invoices, track payments and expenses, and time tasks"
     },
-    "version": "5.1.62~ynh1",
+    "version": "4.5.19~ynh1",
     "url": "https://invoiceninja.org",
     "license": "AAL",
     "maintainer": {
