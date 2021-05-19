@@ -1,4 +1,6 @@
-# Invoice Ninja for YunoHost
+# Invoice Ninja 4 for YunoHost
+
+:warning: You are invited to look at [InvoiceNinja 5](https://github.com/YunoHost-Apps/invoiceninja5_ynh) :warning:
 
 [![Integration level](https://dash.yunohost.org/integration/invoiceninja.svg)](https://dash.yunohost.org/appci/app/invoiceninja) ![](https://ci-apps.yunohost.org/ci/badges/invoiceninja.status.svg) ![](https://ci-apps.yunohost.org/ci/badges/invoiceninja.maintain.svg)  
 [![Install Invoice Ninja with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=invoiceninja)
