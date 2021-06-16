@@ -22,8 +22,13 @@ admin=$(ynh_app_setting_get --app=$app --key=admin)
 final_path=$(ynh_app_setting_get --app=$app --key=final_path)
 language=$(ynh_app_setting_get --app=$app --key=language)
 db_name=$(ynh_app_setting_get --app=$app --key=db_name)
-db_pwd=$(ynh_app_setting_get --app=$app --key=mysqlpwd)
 db_user=$db_name
+db_pwd=$(ynh_app_setting_get --app=$app --key=mysqlpwd)
+api_secret=$(ynh_app_setting_get --app=$app --key=api_secret)
+app_key=$(ynh_app_setting_get --app=$app --key=app_key)
+phantomjs_key=$(ynh_app_setting_get --app=$app --key=phantomjs_key)
+mail_from_address=$(ynh_app_setting_get --app=$app --key=mail_from_address)
+mail_from_name=$(ynh_app_setting_get --app=$app --key=mail_from_name)
 
 #=================================================
 # CHECK VERSION
