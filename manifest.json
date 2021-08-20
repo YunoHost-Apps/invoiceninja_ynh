@@ -5,7 +5,7 @@
     "description": {
         "en": "Create and email invoices, track payments and expenses, and time tasks"
     },
-    "version": "1.0~ynh1",
+    "version": "4.5.19~ynh1",
     "url": "https://invoiceninja.org",
     "license": "AAL",
     "maintainer": {
@@ -14,12 +14,12 @@
         "url": "https://github.com/YunoHost-Apps/invoiceninja_ynh/"
     },
     "requirements": {
-        "yunohost": ">= 3.5"
+        "yunohost": ">= 4.1.0"
     },
     "multi_instance": true,
     "services": [
         "nginx",
-        "php7.0-fpm",
+        "php7.3-fpm",
         "mysql"
     ],
     "arguments": {
@@ -27,29 +27,17 @@
             {
                 "name": "domain",
                 "type": "domain",
-                "ask": {
-                    "en": "Choose a domain name for ynhexample",
-                    "fr": "Choisissez un nom de domaine pour ynhexample"
-                },
                 "example": "example.com"
             },
             {
                 "name": "path",
                 "type": "path",
-                "ask": {
-                    "en": "Choose a path for ynhexample",
-                    "fr": "Choisissez un chemin pour ynhexample"
-                },
                 "example": "/invoiceninja",
                 "default": "/invoiceninja"
             },
             {
                 "name": "admin",
                 "type": "user",
-                "ask": {
-                    "en": "Choose an admin user",
-                    "fr": "Choisissez l'administrateur"
-                },
                 "example": "johndoe"
             },
             {

@@ -1,7 +1,9 @@
-# Invoice Ninja for YunoHost
+# Invoice Ninja 4 for YunoHost
+
+:warning: You are invited to look at [InvoiceNinja 5](https://github.com/YunoHost-Apps/invoiceninja5_ynh) :warning:
 
 [![Integration level](https://dash.yunohost.org/integration/invoiceninja.svg)](https://dash.yunohost.org/appci/app/invoiceninja) ![](https://ci-apps.yunohost.org/ci/badges/invoiceninja.status.svg) ![](https://ci-apps.yunohost.org/ci/badges/invoiceninja.maintain.svg)  
-[![Install Invoice Ninja with YunoHost](https://install-app.yunohost.org/install-with-yunohost.png)](https://install-app.yunohost.org/?app=invoiceninja)
+[![Install Invoice Ninja with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=invoiceninja)
 
 > *This package allows you to install Invoice Ninja quickly and simply on a YunoHost server.  
 If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/install) to learn how to install it.*
@@ -9,7 +11,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 ## Overview
 Invoice Ninja is the #1 open-source platform to create & email invoices, track payments and expenses, and time billable tasks & projects for clients.
 
-**Shipped version:** v4.5.18
+**Shipped version:** v4.5.19
 
 ## Screenshots
 
