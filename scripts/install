@@ -123,7 +123,7 @@ ynh_script_progression --message="Adding a configuration file..."
 
 ynh_add_config --template="../conf/.env" --destination="$final_path/.env"
 
-chmod 400 "$final_path/.env"
+chmod 600 "$final_path/.env"
 chown $app:$app "$final_path/.env"
 
 #=================================================
@@ -135,6 +135,11 @@ pushd "$final_path"
 	# Run the database migrations and initially fill the db
 	php$phpversion artisan migrate --force
 	php$phpversion artisan db:seed --force
+
+	# thanks to cloudron for this!
+	# This comments the check at https://github.com/invoiceninja/invoiceninja/blob/cadd1a3b44aed3dc5bd28d623efd4bb51c6d895a/app/Http/Controllers/AppController.php#L47
+	# We pre-setup various parts already thus the .env file has to exist
+	sed -e "s/^.*app is already configured.*/ /" -i app/Http/Controllers/AppController.php
 popd
 
 #=================================================
