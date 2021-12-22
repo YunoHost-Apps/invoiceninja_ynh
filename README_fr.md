@@ -11,9 +11,9 @@ Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour
 
 ## Vue d'ensemble
 
+Créez et envoyez des factures par e-mail, suivez les paiements
 
-
-**Version incluse :** 4.5.45~ynh1
+**Version incluse :** 4.5.47~ynh1
 
 **Démo :** https://app.invoiceninja.com/dashboard
 
