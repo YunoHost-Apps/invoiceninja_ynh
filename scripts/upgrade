@@ -150,7 +150,7 @@ pushd "$final_path"
 	php$phpversion artisan down
 
 	# Optimize the framework for better performance
-	php$phpversion artisan optimize --force
+	php$phpversion artisan optimize
 
 	# Run the database migrations
 	php$phpversion artisan migrate --force
