@@ -13,7 +13,9 @@
 		setup_public=0
 		upgrade=1
 		# 4.5.18~ynh1
-		#upgrade=1	from_commit=572f98be58975399c5e7fc7d435a4ac5b78765da
+		upgrade=1	from_commit=572f98be58975399c5e7fc7d435a4ac5b78765da
+		# 4.5.45~ynh1
+		upgrade=1	from_commit=1f60ce6460175f08de8e61d7545a3e16888bd904
 		backup_restore=1
 		multi_instance=1
 		port_already_use=0
@@ -21,6 +23,3 @@
 ;;; Options
 Email=
 Notification=none
-;;; Upgrade options
-	; commit=572f98be58975399c5e7fc7d435a4ac5b78765da
-		name=4.5.18~ynh1
