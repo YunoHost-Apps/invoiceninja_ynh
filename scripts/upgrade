@@ -93,12 +93,19 @@ then
 	ynh_script_progression --message="Upgrading source files..."
 
 	# Download, check integrity, uncompress and patch the source from app.src
-	ynh_setup_source --dest_dir="$final_path"
+	ynh_setup_source --dest_dir="$final_path" --keep=".env"
 fi
 
 chmod 750 "$final_path"
 chmod -R o-rwx "$final_path"
 chown -R $app:www-data "$final_path"
+
+#=================================================
+# UPGRADE DEPENDENCIES
+#=================================================
+ynh_script_progression --message="Upgrading dependencies..."
+
+ynh_install_app_dependencies $pkg_dependencies
 
 #=================================================
 # NGINX CONFIGURATION
@@ -143,11 +150,11 @@ pushd "$final_path"
 	php$phpversion artisan down
 
 	# Optimize the framework for better performance
-	php$phpversion artisan optimize --force
+	php$phpversion artisan optimize
 
 	# Run the database migrations
 	php$phpversion artisan migrate --force
-	php$phpversion artisan db:seed --class=UpdateSeeder --force
+	php$phpversion artisan db:seed --force
 
 	# Bring the application out of maintenance mode
 	php$phpversion artisan up
