@@ -57,22 +57,6 @@ ynh_script_progression --message="Removing PHP-FPM configuration..." --weight=1
 ynh_remove_fpm_config
 
 #=================================================
-# UNINSTALL PHANTOMJS
-#=================================================
-ynh_script_progression --message="Uninstalling PhantomJS..." --weight=1
-
-ynh_install_app_dependencies $pkg_dependencies $build_pkg_dependencies
-tmpdir="$(mktemp -d)"
-ynh_setup_source --dest_dir="$tmpdir" --source_id="phantomjs"
-pushd "$tmpdir"
-	ynh_exec_warn_less ./configure && make
-	ynh_exec_warn_less make uninstall
-popd
-ynh_secure_remove --file="$tmpdir"
-ynh_install_app_dependencies $pkg_dependencies
-ynh_package_autoremove
-
-#=================================================
 # REMOVE DEPENDENCIES
 #=================================================
 ynh_script_progression --message="Removing dependencies..." --weight=1
@@ -89,6 +73,8 @@ ynh_script_progression --message="Removing various files..." --weight=1
 
 # Remove a cron file
 ynh_secure_remove --file="/etc/cron.d/$app"
+
+ynh_secure_remove --file="/usr/local/bin/phantomjs"
 
 #=================================================
 # END OF SCRIPT
