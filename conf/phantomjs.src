@@ -1,0 +1,7 @@
+SOURCE_URL=https://github.com/ariya/phantomjs/archive/0a0b0facb16acfbabb7804822ecaf4f4b9dce3d2.tar.gz
+SOURCE_SUM=5fa3d4be85f3aecc066fa2d5bbf55f856957f4fb329da52ec63398195ad9ceaa
+SOURCE_SUM_PRG=sha256sum
+SOURCE_FORMAT=tar.gz
+SOURCE_IN_SUBDIR=true
+SOURCE_FILENAME=
+SOURCE_EXTRACT=true

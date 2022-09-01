@@ -6,7 +6,7 @@
         "en": "Create and email invoices, track payments and expenses",
         "fr": "Créez et envoyez des factures par e-mail, suivez les paiements"
     },
-    "version": "4.5.47~ynh1",
+    "version": "4.5.50~ynh1",
     "url": "https://invoiceninja.org",
     "upstream": {
         "license": "AAL",
@@ -31,7 +31,7 @@
         "mysql"
     ],
     "arguments": {
-        "install" : [
+        "install": [
             {
                 "name": "domain",
                 "type": "domain"
@@ -43,18 +43,21 @@
                 "default": "/invoiceninja"
             },
             {
-                "name": "admin",
-                "type": "user"
-            },
-            {
                 "name": "language",
                 "type": "string",
                 "ask": {
                     "en": "Choose the application language",
                     "fr": "Choisissez la langue de l'application"
                 },
-                "choices": ["fr", "en"],
+                "choices": [
+                    "fr",
+                    "en"
+                ],
                 "default": "en"
+            },
+            {
+                "name": "admin",
+                "type": "user"
             }
         ]
     }
