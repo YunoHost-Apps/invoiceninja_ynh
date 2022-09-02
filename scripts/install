@@ -131,7 +131,7 @@ ynh_install_app_dependencies $pkg_dependencies $build_pkg_dependencies
 tmpdir="$(mktemp -d)"
 ynh_setup_source --dest_dir="$tmpdir" --source_id="phantomjs"
 pushd "$tmpdir"
-	ynh_exec_warn_less ./configure && make
+	ynh_exec_warn_less ./configure && ynh_exec_warn_less make
 	ynh_exec_warn_less make install
 popd
 ynh_secure_remove --file="$tmpdir"
