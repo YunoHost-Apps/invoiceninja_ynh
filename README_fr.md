@@ -15,9 +15,11 @@ Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour
 
 ## Vue d'ensemble
 
-Créez et envoyez des factures par e-mail, suivez les paiements
+Invoice Ninja est la plate-forme open source n°1 pour créer et envoyer des factures par e-mail, suivre les paiements et les dépenses, ainsi que les tâches et projets facturables pour les clients.
 
-**Version incluse :** 4.5.50~ynh1
+
+**Version incluse :** 4.5.50~ynh1
+
 
 **Démo :** https://app.invoiceninja.com/dashboard
 
@@ -27,15 +29,15 @@ Créez et envoyez des factures par e-mail, suivez les paiements
 
 ## Avertissements / informations importantes
 
-:warning: You are invited to look at [InvoiceNinja 5](https://github.com/YunoHost-Apps/invoiceninja5_ynh) :warning:
+:warning: Vous êtes invité à regarder [InvoiceNinja 5](https://github.com/YunoHost-Apps/invoiceninja5_ynh) :warning:
 
-* Any known limitations, constrains or stuff not working, such as (but not limited to):
-    * There is no official LDAP support
-    * The first user gets created after installing Invoice Ninja
-    * Other users can be created from inside the application
+* Toutes les limitations, contraintes ou choses connues qui ne fonctionnent pas, telles que (mais sans s'y limiter) :
+     * Il n'y a pas de support LDAP officiel
+     * Le premier utilisateur est créé après l'installation d'Invoice Ninja
+     * D'autres utilisateurs peuvent être créés depuis l'intérieur de l'application
 
-* Other infos that people should be aware of, such as:
-    * Configuration happens in the application itself.
+* Autres informations que les utilisateurs doivent connaître, telles que :
+     * La configuration se produit dans l'application elle-même.
 
 ## Documentations et ressources
 

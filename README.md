@@ -15,9 +15,11 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 
 ## Overview
 
-Create and email invoices, track payments and expenses
+Invoice Ninja is the #1 open-source platform to create & email invoices, track payments and expenses, and time billable tasks & projects for clients.
+
 
 **Shipped version:** 4.5.50~ynh1
+
 
 **Demo:** https://app.invoiceninja.com/dashboard
 
