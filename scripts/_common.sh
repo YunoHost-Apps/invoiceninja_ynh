@@ -4,7 +4,7 @@
 # COMMON VARIABLES
 #=================================================
 
-YNH_PHP_VERSION="7.3"
+YNH_PHP_VERSION="7.4"
 
 php_dependencies="php$YNH_PHP_VERSION-gd php$YNH_PHP_VERSION-gmp php$YNH_PHP_VERSION-json php$YNH_PHP_VERSION-zip"
 
