@@ -15,9 +15,11 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 
 ## Overview
 
-Create and email invoices, track payments and expenses
+Invoice Ninja is the #1 open-source platform to create & email invoices, track payments and expenses, and time billable tasks & projects for clients.
 
-**Shipped version:** 4.5.47~ynh1
+
+**Shipped version:** 4.5.50~ynh1
+
 
 **Demo:** https://app.invoiceninja.com/dashboard
 
@@ -29,13 +31,11 @@ Create and email invoices, track payments and expenses
 
 :warning: You are invited to look at [InvoiceNinja 5](https://github.com/YunoHost-Apps/invoiceninja5_ynh) :warning:
 
-* Any known limitations, constrains or stuff not working, such as (but not limited to):
-    * There is no official LDAP support
-    * The first user gets created after installing Invoice Ninja
-    * Other users can be created from inside the application
+* There is no official LDAP support
+* The first user gets created after installing Invoice Ninja
+* Other users can be created from inside the application
 
-* Other infos that people should be aware of, such as:
-    * Configuration happens in the application itself.
+* Configuration happens in the application itself.
 
 ## Documentation and resources
 
