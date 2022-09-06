@@ -1,0 +1,11 @@
+--- a/public/index.php
++++ b/public/index.php
+@@ -34,7 +34,7 @@
+ 
+ $app = require_once __DIR__.'/../bootstrap/app.php';
+ 
+-// require_once __DIR__.'/../app/Constants.php';
++require_once __DIR__.'/../app/Constants.php';
+ /*
+ |--------------------------------------------------------------------------
+ | Run The Application

@@ -2,8 +2,8 @@
 	; Manifest
 		domain="domain.tld"
 		path="/path"
-		admin="john"
 		language="fr"
+		admin="john"
 	; Checks
 		pkg_linter=1
 		setup_sub_dir=1
@@ -13,7 +13,7 @@
 		setup_public=0
 		upgrade=1
 		# 4.5.45~ynh1
-		upgrade=1	from_commit=1f60ce6460175f08de8e61d7545a3e16888bd904
+		#upgrade=1	from_commit=1f60ce6460175f08de8e61d7545a3e16888bd904
 		backup_restore=1
 		multi_instance=1
 		port_already_use=0
