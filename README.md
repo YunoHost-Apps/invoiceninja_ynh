@@ -5,7 +5,8 @@ It shall NOT be edited by hand.
 
 # InvoiceNinja for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/invoiceninja.svg)](https://dash.yunohost.org/appci/app/invoiceninja) ![Working status](https://ci-apps.yunohost.org/ci/badges/invoiceninja.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/invoiceninja.maintain.svg)  
+[![Integration level](https://dash.yunohost.org/integration/invoiceninja.svg)](https://dash.yunohost.org/appci/app/invoiceninja) ![Working status](https://ci-apps.yunohost.org/ci/badges/invoiceninja.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/invoiceninja.maintain.svg)
+
 [![Install InvoiceNinja with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=invoiceninja)
 
 *[Lire ce readme en français.](./README_fr.md)*
@@ -19,7 +20,6 @@ Invoice Ninja is the #1 open-source platform to create & email invoices, track p
 
 
 **Shipped version:** 4.5.50~ynh1
-
 
 **Demo:** https://app.invoiceninja.com/dashboard
 
@@ -37,12 +37,16 @@ Invoice Ninja is the #1 open-source platform to create & email invoices, track p
 
 * Configuration happens in the application itself.
 
+## :red_circle: Antifeatures
+
+- **Upstream not maintained**: This software is not maintained anymore. Expect it to break down over time, be exposed to unfixed security breaches, etc.
+
 ## Documentation and resources
 
 * Official app website: <https://invoiceninja.org>
 * Official admin documentation: <https://docs.invoiceninja.com/index.html>
 * Upstream app code repository: <https://github.com/invoiceninja/invoiceninja>
-* YunoHost documentation for this app: <https://yunohost.org/app_invoiceninja>
+* YunoHost Store: <https://apps.yunohost.org/app/invoiceninja>
 * Report a bug: <https://github.com/YunoHost-Apps/invoiceninja_ynh/issues>
 
 ## Developer info
