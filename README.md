@@ -27,16 +27,6 @@ Invoice Ninja is the #1 open-source platform to create & email invoices, track p
 
 ![Screenshot of InvoiceNinja](./doc/screenshots/screenshot.png)
 
-## Disclaimers / important information
-
-:warning: You are invited to look at [InvoiceNinja 5](https://github.com/YunoHost-Apps/invoiceninja5_ynh) :warning:
-
-* There is no official LDAP support
-* The first user gets created after installing Invoice Ninja
-* Other users can be created from inside the application
-
-* Configuration happens in the application itself.
-
 ## :red_circle: Antifeatures
 
 - **Upstream not maintained**: This software is not maintained anymore. Expect it to break down over time, be exposed to unfixed security breaches, etc.
