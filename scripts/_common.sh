@@ -4,21 +4,21 @@
 # COMMON VARIABLES
 #=================================================
 
-YNH_PHP_VERSION="7.4"
-
-php_dependencies="php$YNH_PHP_VERSION-gd php$YNH_PHP_VERSION-gmp php$YNH_PHP_VERSION-json php$YNH_PHP_VERSION-zip"
-
-
-# dependencies used by the app (must be on a single line)
-pkg_dependencies="$php_dependencies"
-
-build_pkg_dependencies="g++ cmake libqt5webkit5-dev"
-# qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools
-
 #=================================================
 # PERSONAL HELPERS
 #=================================================
 
+_install_phantomjs() {
+    tmpdir="$(mktemp -d)"
+
+    ynh_setup_source --dest_dir="$tmpdir" --source_id="phantomjs"
+    pushd "$tmpdir"
+        ynh_exec_warn_less ./configure && ynh_exec_warn_less make
+        ynh_exec_warn_less make install
+    popd
+
+    ynh_secure_remove --file="$tmpdir"
+}
 #=================================================
 # EXPERIMENTAL HELPERS
 #=================================================

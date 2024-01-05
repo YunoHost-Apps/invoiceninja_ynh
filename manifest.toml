@@ -1,0 +1,83 @@
+#:schema https://raw.githubusercontent.com/YunoHost/apps/master/schemas/manifest.v2.schema.json
+
+packaging_format = 2
+
+id = "invoiceninja"
+name = "InvoiceNinja"
+description.en = "Create and email invoices, track payments and expenses"
+description.fr = "Créez et envoyez des factures par e-mail, suivez les paiements"
+
+version = "4.5.50~ynh1"
+
+maintainers = ["rndmh3ro"]
+
+[upstream]
+license = "AAL"
+website = "https://invoiceninja.org"
+demo = "https://app.invoiceninja.com/dashboard"
+admindoc = "https://docs.invoiceninja.com/index.html"
+code = "https://github.com/invoiceninja/invoiceninja"
+cpe = "cpe:2.3:a:invoiceninja:invoice_ninja"
+
+[integration]
+yunohost = ">= 4.3.0"
+architectures = "all"
+multi_instance = true
+ldap = false
+sso = false
+disk = "50M" # FIXME: replace with an **estimate** minimum disk requirement. e.g. 20M, 400M, 1G, ...
+ram.build = "50M" # FIXME: replace with an **estimate** minimum ram requirement. e.g. 50M, 400M, 1G, ...
+ram.runtime = "50M" # FIXME: replace with an **estimate** minimum ram requirement. e.g. 50M, 400M, 1G, ...
+
+[install]
+    [install.domain]
+    type = "domain"
+
+    [install.path]
+    type = "path"
+    default = "/invoiceninja"
+
+    [install.language]
+    ask.en = "Choose the application language"
+    ask.fr = "Choisissez la langue de l'application"
+    type = "select"
+    choices = ["fr", "en"]
+    default = "en"
+
+    [install.admin]
+    type = "user"
+
+[resources]
+    [resources.sources]
+    [resources.sources.main]
+    url = "https://download.invoiceninja.com/ninja-v4.5.50.zip"
+    sha256 = "54ba1cd5747892b346684294dc3512541dc86c6d67bc28126bcd3bf6c206b0d2"
+
+    [resources.sources.phantomjs]
+    url = "https://github.com/ariya/phantomjs/archive/0a0b0facb16acfbabb7804822ecaf4f4b9dce3d2.tar.gz"
+    sha256 = "5fa3d4be85f3aecc066fa2d5bbf55f856957f4fb329da52ec63398195ad9ceaa"
+
+    [resources.system_user]
+
+    [resources.install_dir]
+
+    [resources.permissions]
+    main.url = "/"
+
+    [resources.apt]
+    packages = [
+        "g++",
+        "cmake",
+        "libqt5webkit5-dev",
+        # "qtbase5-dev", "qtchooser", "qt5-qmake", "qtbase5-dev-tools"
+
+        "php7.4-gd",
+        "php7.4-gmp",
+        "php7.4-json",
+        "php7.4-zip",
+
+        "mariadb-server",
+    ]
+
+    [resources.database]
+    type = "mysql"
