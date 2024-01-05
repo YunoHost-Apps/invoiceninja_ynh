@@ -47,6 +47,10 @@ ram.runtime = "50M" # FIXME: replace with an **estimate** minimum ram requiremen
     [install.admin]
     type = "user"
 
+    [install.init_main_permission]
+    type = "group"
+    default = "all_users"
+
 [resources]
     [resources.sources]
     [resources.sources.main]
