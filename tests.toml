@@ -8,4 +8,4 @@ test_format = 1.0
     # Commits to test upgrade from
     # -------------------------------
 
-    test_upgrade_from.1f60ce6460175f08de8e61d7545a3e16888bd904.name = "4.5.45~ynh1"
+    test_upgrade_from.6922b0ee94d03015ff295aa75cfa101868234cef.name = "Last manifestv1"
