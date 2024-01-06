@@ -14,7 +14,7 @@ _install_phantomjs() {
     ynh_setup_source --dest_dir="$source_dir" --source_id="phantomjs"
 
     pushd "$source_dir"
-        ynh_exec_warn_less DESTDIR="$destdir" ./configure
+        ynh_exec_warn_less env PREFIX="$destdir" ./configure
         ynh_exec_warn_less make -j "$(nproc)"
         ynh_exec_warn_less make install
     popd
