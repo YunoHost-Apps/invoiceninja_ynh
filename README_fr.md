@@ -19,7 +19,7 @@ Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) po
 Invoice Ninja est la plate-forme open source n°1 pour créer et envoyer des factures par e-mail, suivre les paiements et les dépenses, ainsi que les tâches et projets facturables pour les clients.
 
 
-**Version incluse :** 4.5.50~ynh1
+**Version incluse :** 5.8.18~ynh1
 
 **Démo :** https://app.invoiceninja.com/dashboard
 
