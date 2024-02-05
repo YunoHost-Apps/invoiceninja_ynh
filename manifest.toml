@@ -60,9 +60,6 @@ ram.runtime = "50M"
     url = "https://download.invoiceninja.com/ninja-v4.5.50.zip"
     sha256 = "54ba1cd5747892b346684294dc3512541dc86c6d67bc28126bcd3bf6c206b0d2"
 
-    autoupdate.upstream = "https://github.com/invoiceninja/invoiceninja"
-    autoupdate.strategy = "latest_github_release"
-
     [resources.sources.phantomjs]
     url = "https://github.com/ariya/phantomjs/archive/0a0b0facb16acfbabb7804822ecaf4f4b9dce3d2.tar.gz"
     sha256 = "5fa3d4be85f3aecc066fa2d5bbf55f856957f4fb329da52ec63398195ad9ceaa"
